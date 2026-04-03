@@ -6,19 +6,41 @@
   <title>Mode Focus - Meditatio</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body { background:#1c1810; color:#e8d9b8; font-size:1.45rem; line-height:1.9; margin:0; padding:40px 20px; }
-    .exit { position:fixed; top:20px; right:20px; background:#8b5a2b; color:white; border:none; padding:12px 20px; border-radius:6px; }
+    body {
+      background: #1c1810;
+      color: #e8d9b8;
+      font-size: 1.5rem;
+      line-height: 1.95;
+      padding: 40px 25px;
+      margin: 0;
+    }
+    .exit-btn {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      background: #8b5a2b;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      z-index: 100;
+    }
+    .focus-text {
+      max-width: 680px;
+      margin: 100px auto 0;
+      text-align: justify;
+    }
   </style>
 </head>
 <body>
-  <button class="exit" onclick="history.back()">← Quitter</button>
-  
-  <div style="max-width:720px; margin:80px auto; text-align:center;">
-    <h2>Mode Focus</h2>
-    <p style="margin-top:50px;">
-      « Souviens-toi que tu es acteur d’une pièce dont l’auteur a choisi le moment, la durée et le rôle. »
-    </p>
-    <p style="margin-top:30px; font-size:1.1rem;">— Épictète</p>
+  <button class="exit-btn" onclick="history.back()">← Quitter</button>
+
+  <div class="focus-text">
+    <h2 style="text-align:center; margin-bottom:50px;">Mode Focus</h2>
+    
+    <p>« Souviens-toi que tu es acteur d’une pièce dont l’auteur a choisi le moment, la durée et le rôle. »</p>
+    <p style="margin-top:40px; font-size:1.15rem;">— Épictète</p>
   </div>
 
   <script src="script.js"></script>
