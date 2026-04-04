@@ -27,15 +27,9 @@
     <h2>Pensées pour moi-même</h2>
     <p class="author">Marc Aurèle — Livre II</p>
 
-    <div class="reading-area">
-      <p><strong>1.</strong> Dès le point du jour, fais cette réflexion : je vais me rencontrer avec un indiscret, un ingrat, un insolent, un fourbe, un envieux, un égoïste. Tous ces vices leur viennent de leur ignorance des biens et des maux.</p>
-      
-      <p><strong>2.</strong> Mais moi, qui ai considéré que le seul bien est la vertu, et que le seul mal est le vice, je ne puis recevoir aucun dommage de celui qui est vicieux.</p>
+    <div id="content" class="reading-area">
+      <p>Chargement des textes...</p>
     </div>
-
-    <p style="text-align:center; margin-top:40px; color:#8b5a2b;">
-      (Version de test — Nous chargerons bientôt tous les 12 livres depuis ta base Supabase)
-    </p>
   </main>
 
   <footer>
@@ -43,6 +37,32 @@
       <p>Meditatio — Stoïcisme Antique</p>
     </div>
   </footer>
+
+  <script>
+    const SUPABASE_URL = 'https://elzsxawxulmtmnasnmmt.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable__njQ52xCdOBGM2oqf8Z2oQ_rhdm2r9k';
+
+    async function loadParagraphs() {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/paragraphs?select=*&order=paragraph_number`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      });
+      const data = await response.json();
+
+      const contentDiv = document.getElementById('content');
+      contentDiv.innerHTML = '';
+
+      data.forEach(p => {
+        const pElement = document.createElement('p');
+        pElement.innerHTML = `<strong>${p.paragraph_number}.</strong> ${p.content}`;
+        contentDiv.appendChild(pElement);
+      });
+    }
+
+    loadParagraphs();
+  </script>
 
   <script src="script.js"></script>
 </body>
